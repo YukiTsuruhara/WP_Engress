@@ -1,0 +1,8 @@
+@import './reset.scss';
+@import './variable.scss';
+
+.test {
+    font-size: $heading-middle;
+    color: $color-yellow;
+    border: 1px solid $color-navy;
+}
