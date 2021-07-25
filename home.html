@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./scss/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Home</title>
 </head>
 <body>
@@ -20,9 +20,9 @@
             </ul>
         </div>
         <div class="header__right">
-            <div class="header__contact">
-                <p class="header__contact--time">平日 08:00~20:00</p>
-                <p class="header__contact--number">
+            <div class="header__info">
+                <p class="header__info--date">平日 08:00~20:00</p>
+                <p class="header__info--number">
                     <img src="./assets/images/phone.svg" alt="電話アイコン">
                     0123-456-7890
                 </p>
@@ -67,7 +67,7 @@
                 <div class="problem__card--content">
                     <h2 class="problem__card--title">
                         Engressは<br>
-                        TOEFLに特化したスクールです
+                        <span>TOEFLに特化したスクール</span>です
                     </h2>
                     <p class="problem__card--text">
                         完全オーダーメイドで、１人１人の悩みに合わせた最適な指導で<br>
@@ -97,6 +97,7 @@
                 <img src="./assets/images/feature01.jpg" alt="パソコン" class="strong__card--image">
             </div>
             <div class="strong__card">
+                <img src="./assets/images/feature02.jpg" alt="講師" class="strong__card--image">
                 <div class="strong__card--textarea">
                     <p class="strong__card--topic">特徴2</p>
                     <h3 class="strong__card--title">
@@ -108,7 +109,6 @@
                         また全メンバーがTESOL(英語教授法)を取得しており、知識と経験を兼ね備えている教育のプロフェッショナルです。
                     </p>
                 </div>
-                <img src="./assets/images/feature02.jpg" alt="講師" class="strong__card--image">
             </div>
             <div class="strong__card">
                 <div class="strong__card--textarea">
@@ -127,7 +127,7 @@
                 <h3 class="strong__plan--title">
                     Engressの料金プランはこちら
                 </h3>
-                <a href="" class="strong__value">料金を見てみる</a>
+                <a href="" class="strong__plan--value">料金を見てみる</a>
             </div>
         </div>
     </section>
@@ -180,25 +180,25 @@
             <h2 class="flow-heading heading">ご利用の流れ</h2>
             <ul class="flow__list">
                 <li class="flow__list--item">
-                    <p class="folw__list--number">01</p>
+                    <p class="flow__list--number">01</p>
                     <p class="flow__list--title">お問い合わせ</p>
                     <span class="flow__list--bar"></span>
                     <p class="flow__list--text">まずはフォームまたはお電話からお申し込みください。</p>
                 </li>
                 <li class="flow__list--item">
-                    <p class="folw__list--number">02</p>
+                    <p class="flow__list--number">02</p>
                     <p class="flow__list--title">ヒアリング</p>
                     <span class="flow__list--bar"></span>
                     <p class="flow__list--text">現在の学習状況やTOEFLスコア、目標のスコアをお聞きします。</p>
                 </li>
                 <li class="flow__list--item">
-                    <p class="folw__list--number">03</p>
+                    <p class="flow__list--number">03</p>
                     <p class="flow__list--title">学習プランのご提供</p>
                     <span class="flow__list--bar"></span>
                     <p class="flow__list--text">目標達成のために最適な学習プランをご提案致します。</p>
                 </li>
                 <li class="flow__list--item">
-                    <p class="folw__list--number">04</p>
+                    <p class="flow__list--number">04</p>
                     <p class="flow__list--title">ご入会</p>
                     <span class="flow__list--bar"></span>
                     <p class="flow__list--text">お申込み完了後、レッスンがスタートします。</p>
@@ -212,19 +212,30 @@
             <h2 class="question__heading heading">よくある質問</h2>
             <ul class="question__list">
                 <li class="question__list--item">
-                    Engressはサラリーマンでも学習を続けられるでしょうか？
-                    <p class="question__list--answer">Engressは各個人に最適な学習プランをご提供しております。サラリーマンの方でも継続できます。</p>
+                    <div class="question__list--content">
+                        <p>Engressはサラリーマンでも学習を続けられるでしょうか？</p>
+                        <img src="./assets/images/puras.png" alt="">
+                    </div>
                 </li>
                 <li class="question__list--item">
-                    教材はオリジナルのものを使用しているのでしょうか？
+                    <div class="question__list--content">
+                        <p>教材はオリジナルのものを使用しているのでしょうか？</p>
+                        <img src="./assets/images/puras.png" alt="">
+                    </div>
                     <p class="question__list--answer"></p>
                 </li>
                 <li class="question__list--item">
-                    講師に日本人はいますか？
+                    <div class="question__list--content">
+                        <p>講師に日本人はいますか？</p>
+                        <img src="./assets/images/puras.png" alt="">
+                    </div>
                     <p class="question__list--answer"></p>
                 </li>
                 <li class="question__list--item">
-                    TOEFL以外の海外大学合格のサポートもしてもらえるのでしょうか？
+                    <div class="question__list--content">
+                        <p>TOEFL以外の海外大学合格のサポートもしてもらえるのでしょうか？</p>
+                        <img src="./assets/images/puras.png" alt="">
+                    </div>
                     <p class="question__list--answer"></p>
                 </li>
             </ul>
@@ -234,20 +245,22 @@
     <section class="info">
         <div class="container">
             <div class="blog">
-                <h3 class="blog__heading">ブログ</h3>
+                <h3 class="info__heading">ブログ</h3>
                 <ul class="blog__list">
                     <li class="blog__list--item">
                         <div class="blog__list--image">
                             <img src="./assets/images/blog-image1.jpg" alt="">
                             <p class="blog__list--category">カテゴリー</p>
                         </div>
-                        <a href="" class="blog__list--text">Engress説明会in大阪の模様をお伝えします</a>
-                        <p class="blog__list--date">2020-12-27</p>
+                        <div>
+                            <a href="" class="blog__list--text">Engress説明会in大阪の模様をお伝えします</a>
+                            <p class="blog__list--date">2020-12-27</p>
+                        </div>
                     </li>
                 </ul>
             </div>
             <div class="news">
-                <h3 class="news__heading">お知らせ</h3>
+                <h3 class="info__heading">お知らせ</h3>
                 <ul class="news__list">
                     <li class="news__list--item">
                         <p class="news__list--date">2020-12-01</p>
@@ -260,26 +273,25 @@
 
     <section class="bill">
         <div class="container">
-            <div class="bill__content">
-                <h2 class="bill__heading heading">まずは無料で資料請求から</h2>
-                <a href="" class="bill__document">資料請求</a>
-                <a href="" class="bill__contact">お問い合わせ</a>
-            </div>
-            <div class="bill__form">
-                お電話でのお問い合わせはこちら
-                <span class="bill__number">0123-456-7890</span>
-                <span class="bill__date">平日  08:00~20:00</span>
-            </div>
+            <h2 class="bill__heading heading">まずは無料で資料請求から</h2>
+            <a href="" class="bill__document">資料請求</a>
+            <a href="" class="bill__contact">お問い合わせ</a>
         </div>
     </section>
+    
+    <div class="form">
+        お電話でのお問い合わせはこちら
+        <span class="form__number">0123-456-7890</span>
+        <span class="form__date">平日  08:00~20:00</span>
+    </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer__contents">
                 <ul class="footer__nav">
-                    <li class="footer__nav--item">ホーム</li>
-                    <li class="footer__nav--item">お知らせ</li>
-                    <li class="footer__nav--item">ブログ</li>
+                    <li class="footer__nav--item">ホーム</li> |
+                    <li class="footer__nav--item">お知らせ</li> |
+                    <li class="footer__nav--item">ブログ</li> |
                     <li class="footer__nav--item">コース・料金</li>
                 </ul>
                 <div class="footer__info">
@@ -291,8 +303,12 @@
                     <p class="footer__info--date">平日08:00~20:00</p>
                 </div>
             </div>
-            <div class="footer__copylight">© 2020 Engress. </div>
         </div>
     </footer>
+    <div class="footer__copylight">
+        <div class="container">
+            © 2020 Engress. 
+        </div>
+    </div>
 </body>
 </html>

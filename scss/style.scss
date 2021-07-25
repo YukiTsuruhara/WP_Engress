@@ -1,8 +1,454 @@
 @import './reset.scss';
-@import './variable.scss';
+@import './variables.scss';
 
-.test {
-    font-size: $heading-middle;
-    color: $color-yellow;
-    border: 1px solid $color-navy;
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
 }
+
+.heading {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: $color-navy;
+}
+
+/* 
+    header
+*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    &__left {
+        &--contents {
+            display: flex;
+            align-items: center;
+            li:not(:first-child) {
+                margin-left: 28px;
+            }
+        }
+    }
+    &__right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__info {
+        text-align: right;
+        &--date {
+            font-size: $font-small;
+        }
+        &--number {
+          font-weight: bold;
+          margin-top: 10px;  
+        }
+    }
+    &__document {
+        padding: 18px 43px;
+        background-color: $color-yellow;
+        color: $color-white;
+        border-radius: 5px;
+        margin-left: 23px;
+    }
+    &__contact {
+        padding: 18px 43px;
+        background-color: $color-navy;
+        color: $color-white;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+}
+
+/* 
+    kv
+*/
+.kv {
+    background-image: url('../assets/images/kv.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 480px;
+    color: $color-white;
+    &__heading {
+        font-size: 48px;
+        font-weight: 600;
+    }
+    &__description {
+        font-size: $font-article;
+        margin-top: 25px;
+        line-height: 30px;
+    }
+    &__document {
+        display: inline-block;
+        padding: 22px 95px;
+        background-color: $color-yellow;
+        color: $color-white;
+        border-radius: 30px;
+        margin-top: 50px;
+    }
+    &__contact {
+        display: inline-block;
+        color: $color-white;
+        text-decoration: underline;
+        margin-top: 22px;
+    }
+}
+
+// 悩み
+
+.problem {
+    padding: 60px 0;
+    background-color: $color-navy;
+    color: $color-white;
+    &__list {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 65px;
+        li:not(:first-child) {
+            margin-left: 30px;
+        }
+    }
+    &__card {
+        margin-top: 80px;
+        padding: 10px;
+        background-color: $color-white;
+        color: $color-navy;
+        text-align: center;
+        &--content{
+            border: 3px solid $color-navy;
+            padding: 20px;
+        }
+        &--title {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 50px;
+            span {
+                background: linear-gradient(transparent 70%, $color-yellow);
+            }
+        }
+        &--text {
+            margin-top: 25px;
+            line-height: 30px;
+        }
+    }
+}
+
+// 強み
+
+.strong {
+    padding: 60px;
+    color: $color-navy;
+    &__card {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 60px;
+        &--textarea {
+            width: 500px;
+        }
+        &--topic {
+            width: 90px;
+            line-height: 30px;
+            text-align: center;
+            font-size: $font-small;
+            background-color: $color-yellow;
+            color: $color-white;
+        }
+        &--title {
+            font-size: 26px;
+            font-weight: bold;
+            line-height: 40px;
+            margin-top: 25px;
+        }
+        &--text {
+            margin-top: 25px;
+            line-height: 27px;
+        }
+    }
+    img {
+        width: 350px;
+        height: 240px;
+        object-fit: cover;
+    }
+    &__plan {
+        width: 900px;
+        background-image: url('../assets/images/price.jpg');
+        background-repeat: no-repeat;
+        padding: 60px 0;
+        margin-top: 90px;
+        text-align: center;
+        color: $color-white;
+        &--title {
+            font-size: 26px;
+        }
+        &--value {
+            display: inline-block;
+            color: $color-white;
+            margin-top: 30px;
+            padding: 18px 44px;
+            border: 1px solid $color-white;
+            border-radius: 30px;
+        }
+    }
+}
+
+.example {
+    padding: 60px 0;
+    background-color: $color-navy;
+    color: $color-white;
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 140px;
+    }
+    &__card {
+        flex-basis: 280px;
+        &--text {
+            line-height: 30px;
+        }
+        img {
+            margin-top: 10px;
+        }
+        &--detail {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        &--work {
+            width: 90px;
+            line-height: 32px;
+            padding-left: 10px;
+            background-color: $color-white;
+            color: $color-navy;
+        }
+        &--name {
+            width: 160px;
+            padding-left: 10px;
+            color: $color-navy;
+            background-color: $color-white;
+            line-height: 32px;
+
+        }
+        &--description {
+            margin-top: 15px;
+            width: 270px;
+            line-height: 32px;
+            padding-left: 10px;
+            color: $color-navy;
+            background-color: $color-white;
+        }
+    }
+}
+
+.flow {
+    padding: 60px 0;
+    color: $color-navy;
+    &__list {
+        margin-top: 50px;
+        &--item {
+            display: flex;
+            align-items: center;
+            background-color: $color-smoke;
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+        }
+        &--number {
+            width: 64px;
+            line-height: 64px;
+            background-color: $color-yellow;
+            color: $color-white;
+            text-align: center;
+        }
+        &--title {
+            width: 210px;
+            font-size: $font-article;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+        &--bar {
+            width: 1px;
+            height: 30px;
+            background-color: $color-dark;
+        }
+        &--text {
+            width: 60%;
+            margin-left: 54px;
+        }
+    }
+}
+
+.question {
+    &__list {
+        margin-top: 30px;
+        font-size: $font-small;
+        color: $color-navy;
+        &--item {
+            padding: 20px 0;
+            border-top: 3px solid $color-gray;
+            &:last-child {
+                border-bottom: 3px solid $color-gray;
+            }
+        }
+        &--content {
+            display: flex;
+            justify-content: space-between;
+            img {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+.info {
+    margin-top: 90px;
+    &__heading {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.blog {
+    &__list {
+        margin-top: 30px;
+        &--item {
+            width: 430px;
+            position: relative;
+            display: flex;
+        }
+        &--category {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            line-height: 25px;
+            text-align: center;
+            font-size: $font-small;
+            color: $color-white;
+            background-color: $color-navy;
+        }
+        &--image {
+            margin-right: 20px;
+        }
+        &--text {
+            font-weight: bold;
+            text-decoration: underline;
+            line-height: 30px;
+        }
+        &--date {
+            position: absolute;
+            bottom: 0;
+            font-size: $font-small;
+        }
+    }
+}
+
+.news {
+    width: 430px;
+    &__list {
+        margin-top: 30px;
+        &--date {
+            font-size: $font-small;
+        }
+        &--text {
+            display: block;
+            margin-top: 15px;
+            text-decoration: underline;
+        }
+    }
+}
+
+.bill {
+    padding: 50px 0;
+    margin-top: 120px;
+    color: $color-white;
+    background-image: url('../assets/images/cta.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    a {
+        display: block;
+        color: $color-white;
+        text-align: center;
+    }
+    &__document {
+        width: 280px;
+        line-height: 50px;
+        background-color: $color-yellow;
+        margin: 0 auto;
+        margin-top: 20px;
+        border-radius: 30px;
+    }
+    &__contact {
+        margin-top: 20px;
+        font-size: $font-small;
+        color: $color-smoke;
+        text-decoration: underline;
+    }
+}
+
+.form {
+    padding: 25px 0;
+    text-align: center;
+    &__number {
+        font-size: 36px;
+    }
+    &__date {
+        font-size: $font-small;
+    }
+}
+
+.footer {
+    padding: 40px 0;
+    background-color: $color-navy;
+    color: $color-white;
+    &__contents {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__nav {
+        display: flex;
+        &--item {
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+    }
+    &__info {
+        text-align: right;
+        &--contact {
+            margin-top: 20px;
+        }
+        &--date {
+            margin-top: 15px;
+            font-size: $font-small;
+        }
+    }
+    &__copylight {
+        text-align: right;
+        padding: 20px 0;
+        font-size: $font-small;
+    }
+}
+
