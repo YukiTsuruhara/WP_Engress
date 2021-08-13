@@ -1,0 +1,22 @@
+$header: 1049px;
+$tablet: 910px;
+$mobile: 680px;
+
+
+@mixin header {
+    @media screen and (max-width:$header) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (max-width:$tablet) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media screen and (max-width:$mobile) {
+        @content;
+    }
+}

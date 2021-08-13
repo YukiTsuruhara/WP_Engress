@@ -1,7 +1,11 @@
 @import "./reset.scss";
 @import "./variables.scss";
+@import "./mixin.scss";
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,17 +16,26 @@ body {
   font-size: 36px;
   font-weight: 600;
   text-align: center;
+  @include tablet {
+    font-size: 28px;
+  }
 }
 
 .sheading {
   font-size: 32px;
   font-weight: bold;
   text-align: center;
+  @include tablet {
+    font-size: 26px;
+  }
 }
 
 .container {
   max-width: 900px;
   margin: 0 auto;
+  @include tablet {
+    max-width: 680px;   
+  }
 }
 
 a {
@@ -34,17 +47,80 @@ a {
     header
 */
 .header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
   padding: 0 20px;
+  background-color: $color-white;
+  &__logo {
+    @include header {
+      z-index: 10;
+    }
+  }
+  &__contents {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @include header {
+      flex-direction: column;
+      justify-content: center;
+      transform: translateY(-100%);
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      background-color: $color-white;
+      transition: all 0.3s;
+    }
+  }
   &__left {
+    @include header {
+      width: 100%;     
+    }
     &--contents {
       display: flex;
       align-items: center;
+      @include header {
+        flex-direction: column;
+        text-align: center;
+      }
+      li {
+        @include header {
+          width: 100%; 
+          border-top: 1px solid $color-smoke;
+          background-color: $color-navy;
+          padding: 30px 0;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+        a {
+          display: inline-block;
+          width: 100%;
+          @include header {
+            color: $color-white;
+            height: 100%;
+            font-size: 22px;
+          }
+        }
+      }
       li:not(:first-child) {
         margin-left: 28px;
+        @include header {
+          margin: 0; 
+        }
+      }
+      li:last-child {
+        @include header {
+          border-bottom: 1px solid $color-smoke; 
+        }
       }
     }
   }
@@ -52,9 +128,19 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include header {
+      width: 100%;     
+      margin-top: 50px;
+    }
+    @include header {
+      flex-direction: column; 
+    }
   }
   &__info {
     text-align: right;
+    @include header {
+      display: none; 
+    }
     &--date {
       font-size: $font-small;
     }
@@ -69,6 +155,17 @@ a {
     color: $color-white;
     border-radius: 5px;
     margin-left: 23px;
+    @include header {
+      width: 100%;
+      text-align: center;     
+      padding: 30px 0;
+      font-size: 22px;
+      margin: 0;
+      border-radius: 0;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
   }
   &__contact {
     padding: 18px 43px;
@@ -76,11 +173,72 @@ a {
     color: $color-white;
     border-radius: 5px;
     margin-left: 10px;
+    @include header {
+      padding: 30px 0;
+      width: 100%;     
+      text-align: center;
+      font-size: 22px;
+      margin: 0;
+      border-radius: 0;
+      border-top: 2px solid $color-white;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  &__barger {
+    position: relative;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    display: none;
+    z-index: 10;
+    @include header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    span {
+      position: absolute;
+      right: 10px;
+      display: block;
+      width: 30px;
+      height: 1px;
+      background-color: $color-navy;
+      transition: all 0.4s;
+    }
+    span:nth-of-type(1) {
+      top: 25%;
+    }
+    span:nth-of-type(2) {
+      top: 50%;
+    }
+    span:nth-of-type(3) {
+      top: 75%;
+    }
+  }
+  &.active {
+    .header__barger {
+      span:nth-of-type(1) {
+        top: 50%;
+        transform: rotate(135deg);
+      }
+      span:nth-of-type(2) {
+        opacity: 0;
+      }
+      span:nth-of-type(3) {
+        top: 50%;
+        transform: rotate(-135deg);
+      }
+    }
+    .header__contents {
+      transform: translateY(0);
+    }
   }
 }
 
 /* 
-    kv
+kv
 */
 .kv {
   background-image: url("../assets/images/kv.jpg");
@@ -93,14 +251,21 @@ a {
   text-align: center;
   height: 480px;
   color: $color-white;
+  padding-top: 80px;
   &__heading {
     font-size: 48px;
     font-weight: 600;
+    @include tablet {
+      font-size: 36px;
+    }
   }
   &__description {
     font-size: $font-article;
     margin-top: 25px;
     line-height: 30px;
+    @include tablet {
+      font-size: $font-normal; 
+    }
   }
   &__document {
     display: inline-block;
@@ -108,7 +273,7 @@ a {
     background-color: $color-yellow;
     color: $color-white;
     border-radius: 30px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
   &__contact {
     display: inline-block;
@@ -121,7 +286,7 @@ a {
 // 悩み
 
 .problem {
-  padding: 60px 0;
+  padding: 60px 20px;
   background-color: $color-navy;
   color: $color-white;
   &__list {
@@ -147,6 +312,9 @@ a {
       font-size: 36px;
       font-weight: bold;
       line-height: 50px;
+      @include tablet {
+        font-size: 30px;
+      }
       span {
         background: linear-gradient(transparent 70%, $color-yellow);
       }
@@ -163,12 +331,30 @@ a {
 .strong {
   padding: 60px;
   color: $color-navy;
+  &__card:nth-child(even) {
+      @include tablet {
+        flex-direction: column-reverse;
+    }   
+  }
   &__card {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
+    @include tablet {
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      border: 2px solid $color-gray;
+      border-radius: 10px;
+      box-shadow: 2px 2px 4px $color-gray;
+    }
     &--textarea {
-      width: 500px;
+      width: 400px;
+      @include tablet {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 30px;
+      }
     }
     &--topic {
       width: 90px;
@@ -193,9 +379,14 @@ a {
     width: 350px;
     height: 240px;
     object-fit: cover;
+    @include tablet {
+      width: 100%;
+      object-fit:cover;
+      border-top-left-radius: 10px; 
+      border-top-right-radius: 10px; 
+    }
   }
   &__plan {
-    width: 900px;
     background-image: url("../assets/images/price.jpg");
     background-repeat: no-repeat;
     padding: 60px 0;
@@ -224,9 +415,20 @@ a {
     display: flex;
     justify-content: space-between;
     margin-top: 140px;
+    @include tablet {
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+    }
   }
   &__card {
     flex-basis: 280px;
+    @include tablet {
+      width: 100%;
+      margin-top: 30px;
+      text-align: center;
+    }
     &--text {
       line-height: 30px;
     }
@@ -237,6 +439,9 @@ a {
       display: flex;
       justify-content: space-between;
       margin-top: 15px;
+      @include tablet {
+        justify-content: center;
+      }
     }
     &--work {
       width: 90px;
@@ -251,6 +456,9 @@ a {
       color: $color-navy;
       background-color: $color-white;
       line-height: 32px;
+      @include tablet {
+        margin-left: 10px;
+      }
     }
     &--description {
       margin-top: 15px;
@@ -259,12 +467,16 @@ a {
       padding-left: 10px;
       color: $color-navy;
       background-color: $color-white;
+      @include tablet {
+        margin: 0 auto;
+        margin-top: 10px;
+      }
     }
   }
 }
 
 .flow {
-  padding: 60px 0;
+  padding: 60px 30px;
   color: $color-navy;
   &__list {
     margin-top: 50px;
@@ -297,29 +509,50 @@ a {
     &--text {
       width: 60%;
       margin-left: 54px;
+      line-height: 20px;
     }
   }
 }
 
 .question {
+  padding: 0 30px;
   &__list {
     margin-top: 30px;
     font-size: $font-small;
     color: $color-navy;
+    border-bottom: 3px solid $color-gray;
     &--item {
-      padding: 20px 0;
+      height: 80px;
       border-top: 3px solid $color-gray;
-      &:last-child {
-        border-bottom: 3px solid $color-gray;
+      &.active {
+        .question__puras {
+          display: none;
+        }
+        .question__mainas {
+          display: block;
+        }
       }
     }
     &--content {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      height: 100%;
       img {
         margin-right: 15px;
       }
     }
+  }
+  &__answer {
+    display: none;
+    padding: 30px;
+    background-color: $color-smoke;
+    p {
+      font-size: $font-small;
+    }
+  }
+  &__mainas {
+    display: none;
   }
 }
 
@@ -332,6 +565,10 @@ a {
   .container {
     display: flex;
     justify-content: space-between;
+    @include tablet {
+      flex-direction: column;
+      align-items: center; 
+    }
   }
 }
 
@@ -356,6 +593,10 @@ a {
     }
     &--image {
       margin-right: 20px;
+      img {
+        width: 150px;
+        height: 110px;
+      }
     }
     &--text {
       font-weight: bold;
@@ -372,6 +613,9 @@ a {
 
 .news {
   width: 430px;
+  @include tablet {
+    margin-top: 50px;   
+  }
   &__list {
     margin-top: 30px;
     &--date {
@@ -413,10 +657,13 @@ a {
 }
 
 .form {
-  padding: 25px 0;
+  padding: 25px 30px;
   text-align: center;
   &__number {
     font-size: 36px;
+    @include tablet {
+      font-size: 28px; 
+    }
   }
   &__date {
     font-size: $font-small;
@@ -424,7 +671,8 @@ a {
 }
 
 .footer {
-  padding: 40px 0;
+  padding: 40px 30px;
+  margin-top: auto;
   background-color: $color-navy;
   color: $color-white;
   &__contents {
@@ -433,9 +681,28 @@ a {
   }
   &__nav {
     display: flex;
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-left: 20px;
+    }
     &--item {
+      height: fit-content;
       &:not(:first-child) {
+        border-left: 1px solid $color-gray;
+        padding-left: 10px;
         margin-left: 10px;
+        @include mobile {
+          border: none;
+          margin: 0;
+          padding: 0;
+          margin-top: 10px;
+        }
+      }
+      a {
+        display: inline-block;
+        color: $color-white;
       }
     }
   }
@@ -451,7 +718,7 @@ a {
   }
   &__copylight {
     text-align: right;
-    padding: 20px 0;
+    padding: 20px 30px;
     font-size: $font-small;
   }
 }
@@ -467,6 +734,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 80px;
   h2 {
     color: $color-white;
   }
@@ -475,6 +743,7 @@ a {
 .bread {
   background-color: $color-smoke;
   height: 50px;
+  padding: 0 20px;
   &--container {
     max-width: 900px;
     height: 100%;
@@ -520,21 +789,41 @@ a {
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 80px;
+    @include tablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
   &__plan {
     width: 220px;
     border: 1px solid $color-gray;
+    @include tablet {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 2px 4px $color-gray;
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+    }
     &--title {
       color: $color-white;
       background-color: $color-navy;
       text-align: center;
       padding: 20px;
+      @include tablet {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
     }
     &--details {
       height: 350px;
       padding: 30px 25px;
       text-align: center;
       color: $color-navy;
+      @include tablet {
+        height: 300px;
+      }
     }
     &--price {
       font-size: 25px;
@@ -566,6 +855,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 80px;
   h2 {
     color: $color-white;
   }
@@ -578,15 +868,35 @@ a {
     margin-top: 60px;
     li {
       display: flex;
+      @include tablet {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $color-navy;
+        border-radius: 10px; 
+        box-shadow: 2px 2px 2px $color-gray;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     li:not(:first-child) {
       margin-top: 60px;
     }
     &--left {
       position: relative;
+      @include tablet {
+        width: 100%; 
+      }
       img {
         width: 240px;
         object-fit: cover;
+        @include tablet {
+          width: 100%;
+          height: 200px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
       }
       span {
         color: $color-white;
@@ -596,10 +906,20 @@ a {
         left: 0;
         padding: 5px;
         font-size: $font-small;
+        @include tablet {
+          top: auto;
+          bottom: 3px;
+          padding: 10px 30px;
+          font-weight: bold;
+          background-color: $color-yellow;
+        }
       }
     }
     &--right {
       margin-left: 50px;
+      @include tablet {
+        padding: 30px; 
+      }
     }
     &--date {
       font-size: $font-small;
@@ -642,9 +962,12 @@ a {
 
 
 .blogDetail {
-  display: flex;
   color: $color-navy;
   padding: 60px 30px;
+}
+
+.blogDetail .container {
+	display: flex;
 }
 
 .main {
@@ -680,6 +1003,11 @@ a {
   }
   &__image {
     margin-top: 40px;
+    @include tablet {
+      img {
+        width: 100%;
+      }
+    }
   }
   &__retitle {
     margin-top: 40px;
@@ -725,6 +1053,9 @@ a {
 }
 
 .sidebar {
+  @include tablet {
+    display: none; 
+  }
   width: 270px;
   margin-left: 40px;
   &__title {
@@ -771,13 +1102,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 80px;
   h2 {
     color: $color-white;
   }
 }
 
-.info {
+.notice {
   color: $color-navy;
+  padding: 0 30px;
   &__list {
     margin-top: 60px;
     &--item {
@@ -800,6 +1133,30 @@ a {
   }
 }
 
+.contactkv {
+  background-image: url("../assets/images/cta.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  h2 {
+    color: $color-white;
+  }
+}
+
+.contact {
+  padding: 60px 30px;
+  color: $color-navy;
+  &__message {
+    margin-top: 50px;
+    line-height: 30px;
+  }
+}
+
 .complete {
   text-align: center;
   color: $color-navy;
@@ -809,4 +1166,9 @@ a {
     margin-top: 80px;
     text-decoration: underline;
   }
+}
+
+.news__contents {
+  padding: 80px 30px;
+  margin-top: 100px;
 }

@@ -1,48 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Home</title>
-</head>
-<body>
-    <!-- ヘッダー -->
-    <header class="header">
-        <div class="header__left">
-            <ul class="header__left--contents">
-                <li><a href="#"><img src="./assets/images/header-logo.png" alt="ヘッダーロゴ"></a></li>
-                <li><a href="">ホーム</a></li>
-                <li><a href="">お知らせ</a></li>
-                <li><a href="">ブログ</a></li>
-                <li><a href="">コース・料金</a></li>
-            </ul>
-        </div>
-        <div class="header__right">
-            <div class="header__info">
-                <p class="header__info--date">平日 08:00~20:00</p>
-                <p class="header__info--number">
-                    <img src="./assets/images/phone.svg" alt="電話アイコン">
-                    0123-456-7890
-                </p>
-            </div>
-            <a class="header__document">資料請求</a>
-            <a class="header__contact">お問い合わせ</a>
-        </div>
-    </header>
+<?php
+/*
+Template Name: サービステンプレート
+*/
+?>
+<?php get_header(); ?>
 
     <div class="section subkv">
             <h2 class="sheading">コース・料金</h2>
     </div>
 
-    <div class="bread">
-        <div class="bread--container">
-            <div class="bread--contents">
-                <a href="#">home</a> >
-            </div>
-        </div>
-    </div>
+    <?php get_template_part('template-parts/breadcrumb'); ?>
 
     <div class="money">
         <div class="container">
@@ -124,8 +91,8 @@
     <section class="bill">
         <div class="container">
             <h2 class="bill__heading heading">まずは無料で資料請求から</h2>
-            <a href="" class="bill__document">資料請求</a>
-            <a href="" class="bill__contact">お問い合わせ</a>
+            <a href="<?php echo home_url(); ?>/contact/" class="bill__document">資料請求</a>
+            <a href="<?php echo home_url(); ?>/contact/" class="bill__contact">お問い合わせ</a>
         </div>
     </section>
     
@@ -135,31 +102,4 @@
         <span class="form__date">平日  08:00~20:00</span>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__contents">
-                <ul class="footer__nav">
-                    <li class="footer__nav--item">ホーム</li> |
-                    <li class="footer__nav--item">お知らせ</li> |
-                    <li class="footer__nav--item">ブログ</li> |
-                    <li class="footer__nav--item">コース・料金</li>
-                </ul>
-                <div class="footer__info">
-                    <img src="./assets/images/footer-logo.png" class="footer__info--logo">
-                    <p class="footer__info--contact">
-                        <img src="./assets/images/phone.svg" alt="">
-                        0123-456-7890
-                    </p>
-                    <p class="footer__info--date">平日08:00~20:00</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div class="footer__copylight">
-        <div class="container">
-            © 2020 Engress. 
-        </div>
-    </div>
-
-</body>
-</html>
+<?php get_footer(); ?>
